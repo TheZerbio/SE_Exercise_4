@@ -1,5 +1,6 @@
 package org.campuscoffee.steps;
 import io.cucumber.java.ParameterType;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -49,4 +50,21 @@ public class SearchSteps {
         assertEquals(output.getName(), storeName);
     }
 
+    @Then("it's name should be {string}")
+    public void itSNameShouldBe(String name) {
+        boolean storeExists = false;
+        var stores = search.getAllStores();
+        for(var store : stores){
+            if (store.getName().equals(name)){
+                storeExists = true;
+                break;
+            }
+        }
+        assertTrue(storeExists);
+    }
+
+    @Then("there should only be {int} registered CoffeShop")
+    public void thereShouldOnlyBeRegisteredCoffeShop(int length) {
+        assertEquals(search.getAllStores().size(), length);
+    }
 }

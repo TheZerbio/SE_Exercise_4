@@ -35,6 +35,7 @@ public class Search {
    public void addStore(CoffeStore store){
        stores.add(store);
    }
+
    ///Retrieves Stores by their name and compares their prices for a specific Coffee
    /// Input Names need to be Stores in the List and both Stores need to sell coffeeType
    /// Returns the CoffeeStore Object with the Lower Price
@@ -44,6 +45,6 @@ public class Search {
        if(Coffee1.equals(Coffee2)){
            return store1;
        }
-       return store1.getPrice(coffeeType) > store2.getPrice(coffeeType) ? store1 : store2;
+       return store1.getPrice(coffeeType) < store2.getPrice(coffeeType) ? store1 : store2;
    }
 }
